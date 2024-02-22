@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
 	@ExceptionHandler(ParcelCostException.class)
-	public ResponseEntity<?> handleParcelCostException(ParcelCostException e){
+	public ResponseEntity<ParcelApiResponse<?>> handleParcelCostException(ParcelCostException e){
 		return new ResponseEntity<>(ParcelApiResponse.builder()
 				.status(ResponseStatus.ERROR)
 				.isError(Boolean.TRUE)
@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(OverWeightException.class)
-	public ResponseEntity<?> handleOverWeightException(OverWeightException e){
+	public ResponseEntity<ParcelApiResponse<?>> handleOverWeightException(OverWeightException e){
 		return new ResponseEntity<>(ParcelApiResponse.builder()
 				.status(ResponseStatus.REJECT)
 				.isError(Boolean.TRUE)
@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
 	}
 
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<?> handleGenericException(Exception e){
+	public ResponseEntity<ParcelApiResponse<?>> handleGenericException(Exception e){
 
 		return new ResponseEntity<>(ParcelApiResponse.builder()
 				.status(ResponseStatus.ERROR)
