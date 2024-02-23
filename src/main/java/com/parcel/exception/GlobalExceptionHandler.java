@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
 				.status(ResponseStatus.ERROR)
 				.isError(Boolean.TRUE)
 				.response("Oops! Something went wrong: "+e.getMessage())
-				.build(),HttpStatus.BAD_REQUEST);
+				.build(),HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 }

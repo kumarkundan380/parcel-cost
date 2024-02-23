@@ -1,6 +1,6 @@
 package com.parcel.enums;
 
-public enum Rules {
+public enum ParcelType {
 
     HEAVY_PARCEL("Heavy Parcel"),
     SMALL_PARCEL("Small Parcel"),
@@ -13,7 +13,7 @@ public enum Rules {
         return value;
     }
 
-    Rules(String value) {
+    ParcelType(String value) {
         this.value = value;
     }
 }

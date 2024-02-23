@@ -1,8 +1,8 @@
 package com.parcel.service.service.impl;
 
 import com.parcel.constants.ParcelConstant;
-import com.parcel.enums.Cost;
-import com.parcel.enums.Rules;
+import com.parcel.enums.ParcelCost;
+import com.parcel.enums.ParcelType;
 import com.parcel.exception.OverWeightException;
 import com.parcel.request.ParcelRequest;
 import com.parcel.response.ParcelCostResponse;
@@ -28,17 +28,17 @@ public class ParcelCostServiceImpl implements ParcelCostService {
             log.error("Weight cannot be more than 50kg");
             throw new OverWeightException("Weight cannot be more than 50kg");
         } else if(parcelRequest.getWeight().compareTo(ParcelConstant.HEAVY_WEIGHT) > 0 ) {
-            cost = parcelRequest.getWeight().multiply(Cost.HEAVY_PARCEL.getCost());
-            parcelType = Rules.HEAVY_PARCEL.getValue();
+            cost = parcelRequest.getWeight().multiply(ParcelCost.HEAVY_PARCEL.getCost());
+            parcelType = ParcelType.HEAVY_PARCEL.getValue();
         } else if(volume.compareTo(ParcelConstant.SMALL_WEIGHT) < 0 ) {
-            cost = volume.multiply(Cost.SMALL_PARCEL.getCost());
-            parcelType = Rules.SMALL_PARCEL.getValue();
+            cost = volume.multiply(ParcelCost.SMALL_PARCEL.getCost());
+            parcelType = ParcelType.SMALL_PARCEL.getValue();
         } else if (volume.compareTo(ParcelConstant.MEDIUM_WEIGHT) < 0 ) {
-            cost = volume.multiply(Cost.MEDIUM_PARCEL.getCost());
-            parcelType = Rules.MEDIUM_PARCEL.getValue();
+            cost = volume.multiply(ParcelCost.MEDIUM_PARCEL.getCost());
+            parcelType = ParcelType.MEDIUM_PARCEL.getValue();
         } else {
-            cost = volume.multiply(Cost.LARGE_PARCEL.getCost());
-            parcelType = Rules.LARGE_PARCEL.getValue();
+            cost = volume.multiply(ParcelCost.LARGE_PARCEL.getCost());
+            parcelType = ParcelType.LARGE_PARCEL.getValue();
         }
         cost = cost.setScale(2, RoundingMode.HALF_UP);
         return new ParcelCostResponse(parcelType,cost);

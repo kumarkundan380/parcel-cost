@@ -2,7 +2,7 @@ package com.parcel.enums;
 
 import java.math.BigDecimal;
 
-public enum Cost {
+public enum ParcelCost {
 
     HEAVY_PARCEL(new BigDecimal("20.0")),
     SMALL_PARCEL(new BigDecimal("0.03")),
@@ -15,7 +15,7 @@ public enum Cost {
         return cost;
     }
 
-    Cost(BigDecimal cost) {
+    ParcelCost(BigDecimal cost) {
         this.cost = cost;
     }
 }

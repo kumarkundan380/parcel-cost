@@ -1,6 +1,6 @@
 package com.parcel.service.service.impl;
 
-import com.parcel.enums.Rules;
+import com.parcel.enums.ParcelType;
 import com.parcel.exception.OverWeightException;
 import com.parcel.exception.ParcelCostException;
 import com.parcel.request.ParcelRequest;
@@ -43,7 +43,7 @@ class ParcelCostServiceImplTest {
         parcelRequest.setHeight(new BigDecimal("10.34"));
         parcelRequest.setWidth(new BigDecimal("15.34"));
         parcelRequest.setLength(new BigDecimal("10.78"));
-        assertEquals(Rules.HEAVY_PARCEL.getValue(),parcelCostService.calculateCost(parcelRequest).getParcelType());
+        assertEquals(ParcelType.HEAVY_PARCEL.getValue(),parcelCostService.calculateCost(parcelRequest).getParcelType());
     }
 
     @Test
@@ -52,7 +52,7 @@ class ParcelCostServiceImplTest {
         parcelRequest.setHeight(BigDecimal.ONE);
         parcelRequest.setWidth(BigDecimal.ONE);
         parcelRequest.setLength(BigDecimal.ONE);
-        assertEquals(Rules.SMALL_PARCEL.getValue(),parcelCostService.calculateCost(parcelRequest).getParcelType());
+        assertEquals(ParcelType.SMALL_PARCEL.getValue(),parcelCostService.calculateCost(parcelRequest).getParcelType());
     }
 
     @Test
@@ -61,7 +61,7 @@ class ParcelCostServiceImplTest {
         parcelRequest.setHeight(new BigDecimal("10.34"));
         parcelRequest.setWidth(new BigDecimal("15.34"));
         parcelRequest.setLength(new BigDecimal("10.78"));
-        assertEquals(Rules.MEDIUM_PARCEL.getValue(),parcelCostService.calculateCost(parcelRequest).getParcelType());
+        assertEquals(ParcelType.MEDIUM_PARCEL.getValue(),parcelCostService.calculateCost(parcelRequest).getParcelType());
     }
 
     @Test
@@ -70,7 +70,7 @@ class ParcelCostServiceImplTest {
         parcelRequest.setHeight(new BigDecimal("10.34"));
         parcelRequest.setWidth(new BigDecimal("150.34"));
         parcelRequest.setLength(new BigDecimal("10.78"));
-        assertEquals(Rules.LARGE_PARCEL.getValue(),parcelCostService.calculateCost(parcelRequest).getParcelType());
+        assertEquals(ParcelType.LARGE_PARCEL.getValue(),parcelCostService.calculateCost(parcelRequest).getParcelType());
     }
 
     @Test
